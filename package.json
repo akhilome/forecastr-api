@@ -1,0 +1,7 @@
+{
+  "name": "weather-api",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Kizito Akhilome <hovkard@gmail.com>",
+  "license": "MIT"
+}
