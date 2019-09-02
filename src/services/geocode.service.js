@@ -10,7 +10,7 @@ class GeocodeService {
     const data = await fetch(reqURL);
     const res = await data.json();
     const [longitude, latitude] = res.features[0].geometry.coordinates;
-    return { latitude, longitude };
+    return { location, latitude, longitude };
   }
 }
 

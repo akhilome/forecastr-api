@@ -7,9 +7,9 @@ const { darkSkyToken } = env;
 class WeatherService {
   /**
    *
-   * @param {{ latitude: number, longitude: number }} coords - coordinates object for location
+   * @param {{ location: string, latitude: number, longitude: number }} coords - coordinates object for location
    * @param {number} days - number of days to get forecast for (defaults to 5)
-   * @returns {{ day: string, summary: string, minTemp: number, maxTemp: number, avgTemp: number, windSpeed: number }[]} forecasts for specified number of days
+   * @returns {{location: string, forecasts: { day: string, summary: string, minTemp: number, maxTemp: number, avgTemp: number, windSpeed: number }[]}} forecasts for specified number of days
    */
   static async getDailyForecast(coords, days = 5) {
     const { latitude, longitude } = coords;
@@ -35,9 +35,9 @@ class WeatherService {
 
         return [...acc, obj];
       }, [])
-      .slice(0, days + 1);
+      .slice(1, days + 1);
 
-    return formattedData;
+    return { location: coords.location, forecasts: formattedData };
   }
 }
 
