@@ -25,11 +25,9 @@ class WeatherService {
         const obj = {
           day: DAYS_OF_THE_WEEK[day],
           summary: cur.summary,
-          minTemp: cur.temperatureMin,
-          maxTemp: cur.temperatureMax,
-          avgTemp: Number(
-            ((cur.temperatureMin + cur.temperatureMax) / 2).toFixed(2)
-          ),
+          minTemp: Math.round(cur.temperatureMin),
+          maxTemp: Math.round(cur.temperatureMax),
+          avgTemp: Math.round((cur.temperatureMin + cur.temperatureMax) / 2),
           windSpeed: cur.windSpeed
         };
 
