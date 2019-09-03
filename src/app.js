@@ -7,27 +7,16 @@ const { port } = env;
 
 const app = express();
 
-const whitelist = ['https://forecastr-api.herokuapp.com'];
+const whitelist = [
+  'https://forecstr.now.sh',
+  'http://localhost:3000',
+  'http://localhost:5000'
+];
 const corsOptions = {
-  origin: (origin, cb) => {
-    if (
-      whitelist.indexOf(origin) !== -1 ||
-      origin.startsWith('http://localhost')
-    ) {
-      cb(null, true);
-    } else {
-      cb(new Error('CORS: Not allowed'));
-    }
-  }
+  origin: whitelist
 };
 
-app.use(cors(corsOptions), (err, req, res, next) => {
-  if (err) {
-    res.status(400).json({ success: false, message: 'blocked by cors' });
-  } else {
-    next();
-  }
-});
+app.use(cors(corsOptions));
 app.use('/api/v1', router);
 
 app.get('/', (req, res) => {
