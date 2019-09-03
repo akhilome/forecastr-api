@@ -7,7 +7,7 @@ const { port } = env;
 
 const app = express();
 
-const whitelist = ['https://forecastr-api.herokuapp.com'];
+const whitelist = ['https://forecstr.now.sh'];
 const corsOptions = {
   origin: (origin, cb) => {
     if (
