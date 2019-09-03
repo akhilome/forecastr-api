@@ -37,4 +37,11 @@ app.get('/', (req, res) => {
   });
 });
 
+app.all('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'non-existent path'
+  });
+});
+
 app.listen(port, () => console.log(`App running on port ${port}`));
