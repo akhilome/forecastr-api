@@ -23,7 +23,7 @@ class WeatherService {
       .reduce((acc, cur, i) => {
         const day = new Date(Date.now()).getDay() + i;
         const obj = {
-          day: DAYS_OF_THE_WEEK[day],
+          day: i === 0 ? 'Today' : DAYS_OF_THE_WEEK[day],
           summary: cur.summary,
           minTemp: Math.round(cur.temperatureMin),
           maxTemp: Math.round(cur.temperatureMax),
@@ -33,7 +33,7 @@ class WeatherService {
 
         return [...acc, obj];
       }, [])
-      .slice(1, days + 1);
+      .slice(0, days + 1);
 
     return { location: coords.location, forecasts: formattedData };
   }
