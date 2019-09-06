@@ -1,4 +1,5 @@
 import express from 'express';
+import helmet from 'helmet';
 import cors from 'cors';
 import env from './config/environment';
 import router from './routes/index.route';
@@ -6,6 +7,8 @@ import router from './routes/index.route';
 const { port } = env;
 
 const app = express();
+
+app.use(helmet());
 
 const whitelist = [
   'https://forecstr.now.sh',
