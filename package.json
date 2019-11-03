@@ -4,7 +4,7 @@
   "author": "Kizito Akhilome <hovkard@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "pm2 ./dist/app.js",
     "build": "rm -rf dist && babel src -d dist",
     "dev": "nodemon --watch src --exec babel-node src/app.js",
     "heroku-postbuild": "yarn build"
@@ -15,7 +15,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "helmet": "^3.21.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "pm2": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
